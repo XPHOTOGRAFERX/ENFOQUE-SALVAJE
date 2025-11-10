@@ -43,14 +43,8 @@ nav a:hover {
 
 
 
-/* ✅ HERO */
-.hero {
-    height: 100vh;
-    background: url("images/portada.jpg") center/cover no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+
 
 
 
