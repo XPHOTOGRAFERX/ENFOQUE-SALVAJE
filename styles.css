@@ -52,11 +52,7 @@ nav a:hover {
     align-items: center;
 }
 
-.hero-text {
-    background: rgba(0,0,0,0.5);
-    padding: 20px;
-    text-align: center;
-}
+
 
 /* --- SECCIÓN MEJORES FOTOS --- */
 .mejores-capturas {
@@ -139,5 +135,27 @@ footer {
     z-index: 5;
     position: relative;
     transition: transform 0.3s ease;
+}
+/* --- SECCIÓN DE PRESENTACIÓN (INICIO) --- */
+.hero-text {
+  text-align: center;
+  padding: 120px 20px;
+  color: #fff;
+  background-color: #000; /* por si el fondo no está oscuro */
+}
+
+.hero-text h1 {
+  font-family: 'Georgia', 'Times New Roman', serif; /* fuente formal */
+  font-size: 3rem;
+  color: #0f713b; /* verde Monte */
+  margin-bottom: 30px; /* más espacio con el texto */
+  letter-spacing: 1px;
+}
+
+.hero-text p {
+  font-size: 1.2rem; /* un poco más grande */
+  line-height: 1.8; /* más espacio entre líneas */
+  max-width: 700px;
+  margin: 0 auto; /* centrado */
 }
 
