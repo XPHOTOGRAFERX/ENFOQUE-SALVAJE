@@ -52,26 +52,42 @@ body {
     text-align: center;
 }
 
-/* ✅ GALERÍA */
-.galeria {
-    padding: 100px 40px;
+/* --- SECCIÓN MEJORES FOTOS --- */
+.mejores-fotos {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 80px 40px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
+.mejores-fotos h2 {
+    font-size: 2.2rem;
+    color: #3cb371; /* verde monte */
+    font-family: 'Merriweather', serif;
+    margin-bottom: 40px;
+    letter-spacing: 1.5px;
 }
 
-.grid img {
-    width: 100%;
-    cursor: pointer;
-    transition: 0.3s;
+.galeria-mini {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
 }
 
-.grid img:hover {
+.galeria-mini img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.galeria-mini img:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 15px #3cb371;
 }
+
 
 /* ✅ TEXTO */
 .sobre-mi, .contacto {
