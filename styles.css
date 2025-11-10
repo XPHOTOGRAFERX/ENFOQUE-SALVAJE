@@ -41,6 +41,14 @@ nav a:hover {
     color: #0f713b;       /* efecto al pasar ratón */
 }
 
+/* ✅ HERO */
+.hero {
+    height: 100vh;
+    background: url("images/portada.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
