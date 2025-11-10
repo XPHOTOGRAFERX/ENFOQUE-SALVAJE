@@ -11,31 +11,43 @@ body {
 }
 
 /* ✅ NAVBAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.7);
+/* --- MENÚ SUPERIOR UNIFICADO --- */
+header {
     display: flex;
     justify-content: space-between;
-    padding: 10px 30px;
-    z-index: 100;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-.navbar ul {
-    display: flex;
-    gap: 20px;
+header img {
+    height: 60px; /* tamaño del logo */
 }
 
-.navbar a {
+nav a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    margin: 0 20px;
+    font-weight: 500;     /* grosor de la letra */
+    font-size: 1rem;      /* tamaño de la letra */
+    letter-spacing: 1px;  /* separación de letras */
+    transition: color 0.3s;
 }
 
-.navbar a:hover {
-    color: #0f713b;
+nav a:hover {
+    color: #ffcc00;       /* efecto al pasar ratón */
 }
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* separa los enlaces */
+}
+
 
 /* ✅ HERO */
 .hero {
