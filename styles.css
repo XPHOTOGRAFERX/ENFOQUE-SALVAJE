@@ -76,11 +76,12 @@ body {
 }
 
 .galeria-mini img {
-    width: 320px;
-    height: 220px;
+    width: 200px;
+    height: 130px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
     transition: transform 0.3s, box-shadow 0.3s;
+    
 }
 
 .galeria-mini img:hover {
