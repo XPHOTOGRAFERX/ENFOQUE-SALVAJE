@@ -40,13 +40,7 @@ nav a {
 nav a:hover {
     color: #0f713b;       /* efecto al pasar ratón */
 }
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px; /* separa los enlaces */
-}
+
 
 
 /* ✅ HERO */
