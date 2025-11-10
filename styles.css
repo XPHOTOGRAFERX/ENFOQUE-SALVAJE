@@ -138,26 +138,27 @@ footer {
 }
 /* --- SECCIÓN DE PRESENTACIÓN (INICIO) --- */
 .hero-text {
-  text-align: center;
-  padding: 120px 20px;
+  position: absolute;
+  top: 50%;              /* verticalmente centrado */
+  left: 5%;              /* deja margen desde el borde izquierdo */
+  transform: translateY(-50%); /* solo centra verticalmente */
+  text-align: left;       /* alineación a la izquierda */
   color: #fff;
-  background-color: #000; /* por si el fondo no está oscuro */
+  max-width: 600px;       /* para que no ocupe toda la cabecera */
 }
 
 .hero-text h1 {
-  font-family: 'Georgia', 'Times New Roman', serif; /* fuente formal */
+  font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 3rem;
-  color: #0f713b; /* verde Monte */
-  margin-bottom: 30px; /* más espacio con el texto */
-  letter-spacing: 1px;
+  color: #00ff88; /* verde Monte */
+  margin-bottom: 20px;
 }
 
 .hero-text p {
-  font-size: 1.2rem; /* un poco más grande */
-  line-height: 1.8; /* más espacio entre líneas */
-  max-width: 700px;
-  margin: 0 auto; /* centrado */
+  font-size: 1.2rem;
+  line-height: 1.8;
 }
+
 .hero {
   position: relative;
   width: 100%;
