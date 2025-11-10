@@ -74,5 +74,24 @@
         © [Tu nombre] - Todos los derechos reservados
     </footer>
 
+    <script>
+    // Selecciona todas las imágenes de la galería
+    const fotos = document.querySelectorAll('.galeria-mini img');
+
+    fotos.forEach(foto => {
+        foto.addEventListener('click', () => {
+            // Si ya está ampliada, la reduce
+            if (foto.classList.contains('enlarged')) {
+                foto.classList.remove('enlarged');
+            } else {
+                // Quita la ampliación de otras fotos
+                fotos.forEach(f => f.classList.remove('enlarged'));
+                // Amplía solo la que se clicó
+                foto.classList.add('enlarged');
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
