@@ -38,7 +38,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffcc00;       /* efecto al pasar ratón */
+    color: #0f713b;       /* efecto al pasar ratón */
 }
 nav ul {
     list-style: none;
