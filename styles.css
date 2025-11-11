@@ -98,11 +98,31 @@ nav a:hover {
 
 
 /* ✅ TEXTO */
-.sobre-mi, .contacto {
-    padding: 100px 40px;
-    text-align: center;
-    color:#0f713b
+.sobre-mi {
+  background-color: #000; /* o el color que tengas de fondo */
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
 }
+
+.sobre-mi h2 {
+  font-size: 2.5rem;
+  color: #0f713b; /* Verde monte, mismo estilo que el título principal */
+  margin-bottom: 30px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Aquí viene lo importante 👇 */
+.sobre-mi p {
+  color: #ffffff; /* Blanco puro */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 700px;  /* Esto hace que sea más estrecho */
+  margin: 0 auto;    /* Centra el bloque en la página */
+  text-align: justify; /* Hace que el texto quede bien alineado */
+  opacity: 0.9;      /* Ligera transparencia para suavizarlo un poco */
+}
+
 
 /* ✅ BOTÓN CONTACTO */
 .boton-contacto {
