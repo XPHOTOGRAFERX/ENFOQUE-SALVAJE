@@ -101,6 +101,7 @@ nav a:hover {
 .sobre-mi, .contacto {
     padding: 100px 40px;
     text-align: center;
+    color:#0f713b
 }
 
 /* ✅ BOTÓN CONTACTO */
@@ -165,7 +166,7 @@ footer {
 .hero-text h1 {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 3rem;
-  color: #00ff88;
+  color: #0f713b;
   margin-bottom: 15px;
 }
 
