@@ -152,7 +152,7 @@ footer {
   top: 0;
   left: 0;
   height: 100%;
-  width: 45%; /* un poco más ancho para que se note el degradado */
+  width: 55%; /* un poco más ancho para que se note el degradado */
   background: linear-gradient(90deg, rgba(0,0,0,0.95) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0) 100%);
   color: #fff;
   display: flex;
@@ -173,7 +173,7 @@ footer {
 .hero-text p {
   font-size: 1.1rem;
   line-height: 1.6;
-  max-width: 80%;  /* reduce el ancho para que no se extienda tanto */
+  max-width: 70%;  /* reduce el ancho para que no se extienda tanto */
   margin-top: 0;
   color: #e0e0e0;
 }
