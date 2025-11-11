@@ -243,25 +243,32 @@ footer {
 }
 
 /* ==== SECCIÓN DE REDES ==== */
+/* ==== SECCIÓN DE REDES ==== */
 .redes {
   background-color: #000;
   color: #fff;
-  text-align: center;
-  padding: 80px 20px 120px 20px;
+  text-align: center; /* centra todo el texto */
+  padding: 80px 20px;
 }
 
 .redes h2 {
   font-size: 2.2rem;
   color: #0f713b;
   font-family: 'Georgia', 'Times New Roman', serif;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  text-align: center; /* centra el título */
 }
 
 .redes p {
   font-size: 1.1rem;
   color: #ccc;
   margin-bottom: 40px;
+  text-align: center; /* centra el subtítulo */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto; /* centra el bloque */
 }
+
 
 /* Contenedor de iconos */
 .iconos-redes {
