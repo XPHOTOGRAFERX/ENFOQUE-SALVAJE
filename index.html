@@ -82,11 +82,15 @@
   </div>
 </section>
 
-    <!-- ✅ PIE DE PÁGINA -->
-    <footer>
-        © EnfoqueSalvaje - Todos los derechos reservados
-        © EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.
-    </footer>
+    
+    <footer class="footer-1">
+    <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
+</footer>
+
+<footer class="footer-2">
+    <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
+</footer>
+
 
     <script>
     // Selecciona todas las imágenes de la galería
@@ -106,6 +110,14 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        alert("Las imágenes están protegidas. 😊");
+    });
+</script>
+
+
 
 </body>
 </html>

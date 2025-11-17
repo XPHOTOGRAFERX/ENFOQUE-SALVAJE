@@ -130,6 +130,19 @@ footer {
     padding: 20px;
     background: #111;
 }
+footer {
+    display: block;
+    width: 100%;
+}
+
+.footer-1 {
+    margin-bottom: 40px; /* separación hacia abajo */
+}
+
+.footer-2 {
+    margin-top: 20px; /* por si quieres más separación arriba */
+}
+
 .logo img {
     height: 60px; /* Tamaño del logo */
     width: auto; /* Mantiene proporción */
