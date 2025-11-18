@@ -250,4 +250,83 @@ footer {
   color: #fff;
   transform: scale(1.05);
 }
+/* Nuevo menú con los mismos estilos */
+.nav a {
+    margin: 0 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Títulos verdes */
+.titulo-verde {
+    color: #0F713B;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.3rem;
+    font-family: 'Georgia', serif;
+}
+
+/* FONDO NEGRO GLOBAL */
+.fondo-negro {
+    background: #000;
+    color: white;
+}
+
+/* SECCIÓN EQUIPO */
+.equipo {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.item-equipo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 70px;
+}
+
+.foto-equipo {
+    width: 300px;
+    height: 200px;
+    background: #111;
+    border: 2px solid #0F713B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto-equipo h2 {
+    color: #0F713B;
+}
+
+/* SECCIÓN RECOMENDACIONES */
+.recomendaciones {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.item-recomendacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 70px;
+    gap: 40px;
+}
+
+.texto-lista ul li {
+    margin-bottom: 10px;
+}
+
+.foto-recomendacion {
+    width: 320px;
+    height: 220px;
+    background: #111;
+    border: 2px solid #0F713B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
