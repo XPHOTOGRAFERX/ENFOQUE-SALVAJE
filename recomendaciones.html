@@ -3,83 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Recomendaciones</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mis Recomendaciones - Enfoque Salvaje</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- MENÚ --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header img { height: 60px; }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #0f713b; }
+
+        /* --- TÍTULO --- */
+        .page-title {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2.8rem;
+            color: #0f713b;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #0f713b;
+            margin: 20px auto 0;
+        }
+
+        /* --- CONTENEDOR --- */
+        .recomendaciones-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 70px 20px 100px;
+        }
+
+        /* --- BLOQUE DE CATEGORÍA --- */
+        .categoria {
+            margin-bottom: 90px;
+            padding-bottom: 70px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .categoria:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .categoria-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .categoria-header .icono-cat {
+            width: 50px;
+            height: 50px;
+            background: #0f713b22;
+            border: 1px solid #0f713b55;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f713b;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .categoria-header h2 {
+            font-size: 2rem;
+            color: #0f713b;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        /* Cuerpo del bloque: texto + foto lado a lado */
+        .categoria-body {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .categoria-body.invertido {
+            flex-direction: row-reverse;
+        }
+
+        /* Columna de texto */
+        .texto-rec {
+            flex: 1;
+        }
+
+        .texto-rec p {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Lista de puntos */
+        .lista-rec {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .lista-rec li {
+            color: #ccc;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            padding: 10px 0 10px 30px;
+            border-bottom: 1px solid #111;
+            position: relative;
+        }
+
+        .lista-rec li:last-child { border-bottom: none; }
+
+        .lista-rec li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #0f713b;
+            border-radius: 50%;
+        }
+
+        .lista-rec li strong {
+            color: #fff;
+        }
+
+        /* Foto / placeholder */
+        .foto-rec {
+            width: 300px;
+            min-width: 300px;
+            height: 210px;
+            background: #0d0d0d;
+            border: 1px solid #0f713b;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #0f713b;
+            font-size: 0.85rem;
+            gap: 10px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .foto-rec i {
+            font-size: 2.2rem;
+            opacity: 0.45;
+        }
+
+        .foto-rec img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Nota destacada */
+        .nota {
+            background: #0f713b11;
+            border-left: 3px solid #0f713b;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 0 6px 6px 0;
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .nota strong { color: #0f713b; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-2 { border-top: 1px solid #1a1a1a; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+
+            .categoria-body,
+            .categoria-body.invertido {
+                flex-direction: column;
+            }
+
+            .foto-rec {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .page-title h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="fondo-negro">
+    <!-- MENÚ -->
+    <header>
+        <a href="index.html">
+            <img src="images/mi-logo.png" alt="Logo Enfoque Salvaje">
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+            <a href="miequipo.html">Mi Equipo</a>
+            <a href="recomendaciones.html">Mis Recomendaciones</a>
+        </nav>
+    </header>
 
-    <nav class="nav">
-        <a href="index.html">Inicio</a>
-        <a href="galeria.html">Galería</a>
-        <a href="miequipo.html">Mi Equipo</a>
-        <a href="recomendaciones.html">Mis Recomendaciones</a>
-    </nav>
+    <!-- TÍTULO -->
+    <div class="page-title">
+        <h1>Mis Recomendaciones</h1>
+        <p>Todo lo que necesitas saber sobre el equipamiento para empezar en fotografía de fauna. Sin rodeos, desde la experiencia real en el campo.</p>
+        <div class="divider"></div>
+    </div>
 
-    <section class="recomendaciones">
-        <h1 class="titulo-verde">Mis Recomendaciones</h1>
+    <!-- CONTENIDO -->
+    <section class="recomendaciones-section">
 
-        <!-- LISTA 1 -->
-        <h2 class="titulo-verde">1. Cámaras</h2>
-        <div class="item-recomendacion">
-            <div class="texto-lista">
-                <ul>
-                    <li>Punto 1…</li>
-                    <li>Punto 2…</li>
-                    <li>Punto 3…</li>
-                    <li>Punto 4…</li>
-                    <li>Punto 5…</li>
-                </ul>
+        <!-- 1. CÁMARAS -->
+        <div class="categoria">
+            <div class="categoria-header">
+                <div class="icono-cat"><i class="fas fa-camera"></i></div>
+                <h2>Cámaras</h2>
             </div>
-
-            <div class="foto-recomendacion">Pon aquí tu foto</div>
+            <div class="categoria-body">
+                <div class="texto-rec">
+                    <p>La cámara es la primera decisión, y también la que más confunde. Mi recomendación es clara: empieza con lo que puedas permitirte y mejora con el tiempo cuando ya sepas si esto es para ti.</p>
+                    <ul class="lista-rec">
+                        <li><strong>Bajo presupuesto / para empezar:</strong> Una superzoom compacta como la Canon PowerShot SX70 HS es perfecta. Zoom potente, fácil de usar y precio asequible. Ideal para probar sin arruinarte.</li>
+                        <li><strong>Presupuesto medio:</strong> Busca una cámara réflex o mirrorless de segunda mano con un teleobjetivo de al menos 400mm. La diferencia en calidad de imagen es notable.</li>
+                        <li><strong>Largo plazo:</strong> Con experiencia y presupuesto, una cámara réflex semiprofesional con objetivo 500mm o más es lo ideal para fauna. La inversión merece la pena cuando ya sabes lo que haces.</li>
+                    </ul>
+                    <div class="nota"><strong>Consejo:</strong> No te obsesiones con la cámara al principio. Con paciencia y buen puesto, una cámara humilde saca mejores fotos que una profesional usada sin criterio.</div>
+                </div>
+                <div class="foto-rec">
+                    <!-- <img src="images/rec-camara.jpg" alt="Cámaras recomendadas"> -->
+                    <i class="fas fa-camera"></i>
+                    <span>Foto próximamente</span>
+                </div>
+            </div>
         </div>
 
-        <!-- LISTA 2 -->
-        <h2 class="titulo-verde">2. Trípodes</h2>
-        <div class="item-recomendacion">
-            <div class="texto-lista">
-                <ul>
-                    <li>Punto 1…</li>
-                    <li>Punto 2…</li>
-                    <li>Punto 3…</li>
-                    <li>Punto 4…</li>
-                    <li>Punto 5…</li>
-                </ul>
+        <!-- 2. TRÍPODES -->
+        <div class="categoria">
+            <div class="categoria-header">
+                <div class="icono-cat"><i class="fas fa-arrows-alt-v"></i></div>
+                <h2>Trípodes</h2>
             </div>
-
-            <div class="foto-recomendacion">Pon aquí tu foto</div>
+            <div class="categoria-body invertido">
+                <div class="texto-rec">
+                    <p>Para fotografía desde hide, el trípode es imprescindible. Horas de espera con la cámara en la mano acaban con los brazos y con las fotos movidas.</p>
+                    <ul class="lista-rec">
+                        <li><strong>Uso en hide fijo:</strong> Cualquier trípode básico de Amazon funciona. No necesitas nada caro si no vas a moverte mucho. Lo importante es que sea estable.</li>
+                        <li><strong>Para campo y movilidad:</strong> Busca uno ligero de fibra de carbono si vas a desplazarte mucho. Pesa menos y aguanta más.</li>
+                        <li><strong>Cabezal:</strong> Si puedes, añade un cabezal de bola. Permite mover la cámara con rapidez para seguir animales en movimiento.</li>
+                    </ul>
+                </div>
+                <div class="foto-rec">
+                    <!-- <img src="images/rec-tripode.jpg" alt="Trípode recomendado"> -->
+                    <i class="fas fa-border-none"></i>
+                    <span>Foto próximamente</span>
+                </div>
+            </div>
         </div>
 
-        <!-- LISTA 3 -->
-        <h2 class="titulo-verde">3. Hide</h2>
-        <div class="item-recomendacion">
-            <div class="texto-lista">
-                <ul>
-                    <li>Punto 1…</li>
-                    <li>Punto 2…</li>
-                    <li>Punto 3…</li>
-                </ul>
+        <!-- 3. HIDE -->
+        <div class="categoria">
+            <div class="categoria-header">
+                <div class="icono-cat"><i class="fas fa-tree"></i></div>
+                <h2>Hide</h2>
             </div>
-
-            <div class="foto-recomendacion">Pon aquí tu foto</div>
+            <div class="categoria-body">
+                <div class="texto-rec">
+                    <p>El hide es la pieza más importante de todo el equipo. Con un buen hide, cualquier cámara puede dar resultados increíbles. Sin él, la fauna difícilmente te dejará acercarte lo suficiente.</p>
+                    <ul class="lista-rec">
+                        <li><strong>Si tienes finca propia:</strong> Hazte un hide casero y fijo. Es la mejor opción. Los animales se acostumbran a la estructura con los días y dejan de verla como una amenaza. La inversión es mínima y los resultados, máximos.</li>
+                        <li><strong>Sin finca, presupuesto bajo:</strong> Las sillas con toldo de camuflaje integrado que se venden en Amazon son una solución práctica y económica. Son portátiles, fáciles de montar y dan muy buen resultado para empezar.</li>
+                        <li><strong>Sin finca, más presupuesto:</strong> Existen hides portátiles profesionales tipo tienda de campaña con ventanas para el objetivo. Más cómodos para sesiones largas.</li>
+                        <li><strong>Lo más importante:</strong> Seas cual sea el hide, colócalo con antelación. Cuantos más días lleve puesto antes de usarlo, mejores resultados tendrás.</li>
+                    </ul>
+                    <div class="nota"><strong>Mi experiencia:</strong> El hide casero en finca propia ha sido el mayor salto de calidad en mis fotografías. Si tienes la posibilidad, no lo dudes.</div>
+                </div>
+                <div class="foto-rec">
+                    <!-- <img src="images/rec-hide.jpg" alt="Hide de fotografía"> -->
+                    <i class="fas fa-tree"></i>
+                    <span>Foto próximamente</span>
+                </div>
+            </div>
         </div>
 
-        <!-- LISTA 4 -->
-        <h2 class="titulo-verde">4. Equipo de Vestimenta</h2>
-        <div class="item-recomendacion">
-            <div class="texto-lista">
-                <ul>
-                    <li>Punto 1…</li>
-                    <li>Punto 2…</li>
-                    <li>Punto 3…</li>
-                </ul>
+        <!-- 4. CAMUFLAJE -->
+        <div class="categoria">
+            <div class="categoria-header">
+                <div class="icono-cat"><i class="fas fa-user-secret"></i></div>
+                <h2>Ropa de Camuflaje</h2>
             </div>
-
-            <div class="foto-recomendacion">Pon aquí tu foto</div>
+            <div class="categoria-body invertido">
+                <div class="texto-rec">
+                    <p>La ropa de camuflaje es esencial para moverse por el campo sin alertar a los animales. Hay opciones para todos los bolsillos.</p>
+                    <ul class="lista-rec">
+                        <li><strong>Para empezar:</strong> Un traje de camuflaje genérico de Amazon es más que suficiente. Cubre bien y a un precio muy bajo. Ideal para probar y ver si lo necesitas realmente.</li>
+                        <li><strong>Calidad superior:</strong> La ropa de camuflaje hecha a mano y de forma tradicional es notablemente mejor en durabilidad, silencio al moverse y mimetización con el entorno. Si te tomas esto en serio, merece la inversión.</li>
+                        <li><strong>Colores:</strong> Elige el patrón según el terreno donde fotografie más. Para zona mediterránea y monte bajo, tonos marrones y verdes oscuros funcionan muy bien.</li>
+                        <li><strong>No olvides:</strong> Guantes y pasamontañas o gorro. Las manos y la cara son las partes que más llaman la atención a los animales.</li>
+                    </ul>
+                </div>
+                <div class="foto-rec">
+                    <!-- <img src="images/rec-camuflaje.jpg" alt="Ropa de camuflaje"> -->
+                    <i class="fas fa-user-secret"></i>
+                    <span>Foto próximamente</span>
+                </div>
+            </div>
         </div>
 
     </section>
+
+    <footer class="footer-1">
+        <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
+    </footer>
+    <footer class="footer-2">
+        <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            alert("Las imágenes están protegidas. 😊");
+        });
+    </script>
 
 </body>
 </html>
