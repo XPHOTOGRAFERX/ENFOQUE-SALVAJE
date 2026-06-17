@@ -3,121 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xphotograferx - Fotografía de Vida Salvaje</title>
+    <title>Enfoque Salvaje - Fotografía de Vida Salvaje</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
 
+        /* =====================
+           SECCIÓN: QUÉ ENCONTRARÁS
+        ======================== */
+        .que-encontraras {
+            background: #000;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .que-encontraras h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 2.2rem;
+            color: #0f713b;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .que-encontraras .subtitulo {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 50px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .card-info {
+            background: #0d0d0d;
+            border: 1px solid #0f713b33;
+            border-radius: 10px;
+            padding: 30px 24px;
+            text-align: left;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .card-info:hover {
+            border-color: #0f713b;
+            box-shadow: 0 0 15px #0f713b22;
+        }
+
+        .card-info .icono-card {
+            font-size: 1.6rem;
+            color: #0f713b;
+            margin-bottom: 14px;
+        }
+
+        .card-info h3 {
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .card-info p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .card-info a {
+            display: inline-block;
+            margin-top: 14px;
+            color: #0f713b;
+            font-size: 0.85rem;
+            text-decoration: none;
+            border-bottom: 1px solid #0f713b44;
+            padding-bottom: 2px;
+            transition: border-color 0.3s;
+        }
+
+        .card-info a:hover {
+            border-color: #0f713b;
+        }
+
+        /* =====================
+           SECCIÓN: SIERRA MORENA
+        ======================== */
+        .sierra-morena {
+            background: #060f07;
+            border-top: 1px solid #0f713b22;
+            border-bottom: 1px solid #0f713b22;
+            padding: 80px 60px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sierra-texto {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .sierra-texto h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 2rem;
+            color: #0f713b;
+            margin-bottom: 20px;
+        }
+
+        .sierra-texto p {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .sierra-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 160px;
+        }
+
+        .stat-box {
+            background: #0f713b12;
+            border: 1px solid #0f713b33;
+            border-radius: 8px;
+            padding: 16px 20px;
+            text-align: center;
+        }
+
+        .stat-box .numero {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.8rem;
+            color: #0f713b;
+        }
+
+        .stat-box .etiqueta {
+            color: #666;
+            font-size: 0.78rem;
+            margin-top: 4px;
+        }
+
+        /* =====================
+           SECCIÓN: MEJORES CAPTURAS
+        ======================== */
+        .mejores-capturas {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 60px;
+        }
+
+        .mejores-capturas h2 {
+            font-size: 2.2rem;
+            color: #0f713b;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .mejores-capturas .subtitulo {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .galeria-mini {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .galeria-mini img {
+            width: 350px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+
+        .galeria-mini img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #0f713b;
+        }
+
+        .galeria-mini img.enlarged {
+            transform: scale(1.6);
+            z-index: 5;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-galeria {
+            margin-top: 36px;
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid #0f713b;
+            color: #0f713b;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-galeria:hover {
+            background: #0f713b;
+            color: #fff;
+        }
+
+        /* =====================
+           SECCIÓN: SOBRE MÍ
+        ======================== */
+        .sobre-mi {
+            background-color: #060f07;
+            border-top: 1px solid #0f713b22;
+            color: #fff;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .sobre-mi h2 {
+            font-size: 2.2rem;
+            color: #0f713b;
+            margin-bottom: 30px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .sobre-mi p {
+            color: #ccc;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: justify;
+            opacity: 0.9;
+        }
+
+        /* =====================
+           SECCIÓN: REDES
+        ======================== */
+        .redes {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid #111;
+        }
+
+        .redes h2 {
+            font-size: 2rem;
+            color: #0f713b;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin-bottom: 15px;
+        }
+
+        .redes p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .iconos-redes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .iconos-redes .icono {
+            color: #0f713b;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .iconos-redes .icono:hover {
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+    </style>
 </head>
 <body>
 
- 
-
-    <!-- ✅ MENÚ NAVEGACIÓN -->
+    <!-- MENÚ NAVEGACIÓN -->
     <header class="navbar">
         <div class="logo">
-            <!-- AQUI VA TU LOGO (imagen PNG) -->
-            <!-- Ejemplo: <img src="images/mi-logo.png" alt="Mi logo"> -->
-            <span><img src="images/mi-logo.png" alt="Mi logo"></span>
+            <span><img src="images/mi-logo.png" alt="Logo Enfoque Salvaje"></span>
         </div>
         <nav>
             <ul>
                 <a href="#inicio">Inicio</a>
                 <a href="galeria.html">Galería</a>
+                <a href="experiencias.html">Experiencias</a>
                 <a href="miequipo.html">Mi Equipo</a>
                 <a href="recomendaciones.html">Mis Recomendaciones</a>
+                <a href="micurso.html">Mi Curso</a>
             </ul>
         </nav>
     </header>
 
 
-    <!-- ✅ HERO / PORTADA -->
+    <!-- HERO / PORTADA -->
     <section id="inicio" class="hero">
         <img src="images/foto9.JPG" alt="Foto principal de cabecera">
         <div class="hero-text">
             <h1>Fotografía de vida salvaje</h1>
-            <p>Este es el lugar donde encontrarás los mejores consejos de fotografía de fauna, blogs sobre mis experiencias y fotos y videos de fauna de sierra morena.</p>
+            <p>Un rincón dedicado a la fauna de Sierra Morena. Aquí encontrarás fotos, experiencias reales en el campo y todo lo que necesitas para empezar en este mundo.</p>
         </div>
     </section>
 
 
-    <!-- ✅ GALERIA -->
+    <!-- QUÉ ENCONTRARÁS -->
+    <section class="que-encontraras">
+        <h2>¿Qué encontrarás aquí?</h2>
+        <p class="subtitulo">Todo lo que necesitas para iniciarte en la fotografía de fauna</p>
+        <div class="cards-grid">
+            <div class="card-info">
+                <div class="icono-card"><i class="fas fa-camera"></i></div>
+                <h3>Galería de fauna</h3>
+                <p>Fotos organizadas por especies: águilas, ciervos, aves forestales y más capturas desde el hide.</p>
+                <a href="galeria.html">Ver galería →</a>
+            </div>
+            <div class="card-info">
+                <div class="icono-card"><i class="fas fa-binoculars"></i></div>
+                <h3>Experiencias reales</h3>
+                <p>Relatos de sesiones en el campo, con lo que salió bien, lo que no, y lo que aprendí.</p>
+                <a href="experiencias.html">Leer experiencias →</a>
+            </div>
+            <div class="card-info">
+                <div class="icono-card"><i class="fas fa-tools"></i></div>
+                <h3>Mi equipo</h3>
+                <p>El material que uso en el campo, con una explicación honesta de para qué sirve cada cosa.</p>
+                <a href="miequipo.html">Ver equipo →</a>
+            </div>
+            <div class="card-info">
+                <div class="icono-card"><i class="fas fa-star"></i></div>
+                <h3>Recomendaciones</h3>
+                <p>Lo que compraría si empezara desde cero, con opciones para todos los presupuestos.</p>
+                <a href="recomendaciones.html">Ver recomendaciones →</a>
+            </div>
+            <div class="card-info">
+                <div class="icono-card"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Mi Curso</h3>
+                <p>Próximamente: un curso completo de fotografía de fauna desde cero.</p>
+                <a href="micurso.html">Más información →</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SIERRA MORENA -->
+    <section class="sierra-morena">
+        <div class="sierra-texto">
+            <h2>Sierra Morena, el escenario</h2>
+            <p>
+                Toda la fotografía de esta web nace en Sierra Morena, uno de los ecosistemas más ricos de Europa.
+                Un territorio donde el lince ibérico, el águila imperial y el ciervo rojo comparten espacio con
+                una naturaleza casi intacta. Fotografiarla requiere paciencia, conocimiento del terreno y respeto
+                absoluto por los animales. Es un lugar que te cambia la forma de mirar.
+            </p>
+        </div>
+        <div class="sierra-stats">
+            <div class="stat-box">
+                <div class="numero">+300</div>
+                <div class="etiqueta">especies de aves registradas</div>
+            </div>
+            <div class="stat-box">
+                <div class="numero">4</div>
+                <div class="etiqueta">estaciones, 4 mundos distintos</div>
+            </div>
+            <div class="stat-box">
+                <div class="numero">1</div>
+                <div class="etiqueta">hide, mucha paciencia</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MEJORES CAPTURAS -->
     <section class="mejores-capturas">
-    <h2>Mejores Capturas</h2>
-    <div class="galeria-mini">
-        <img src="images/foto1.JPG" alt="Foto 1">
-        <img src="images/foto3.JPG" alt="Foto 3">
-        <img src="images/foto6.JPG" alt="Foto 6">
-    </div>
-</section>
+        <h2>Mejores Capturas</h2>
+        <p class="subtitulo">Una selección de las fotos que más me han gustado</p>
+        <div class="galeria-mini">
+            <img src="images/foto1.JPG" alt="Foto 1">
+            <img src="images/foto3.JPG" alt="Foto 3">
+            <img src="images/foto6.JPG" alt="Foto 6">
+        </div>
+        <a href="galeria.html" class="btn-galeria">Ver galería completa</a>
+    </section>
 
 
-
-    <!-- ✅ SOBRE MI -->
+    <!-- SOBRE MÍ -->
     <section id="sobre-mi" class="sobre-mi">
         <h2>Sobre mí</h2>
         <p>
-            Soy un fotógrafo con experiencia que con pocos recursos ha podido sacar muy buenas fotos y que puedo compartir mis consejos para unas mejores fotos. Cuando entras en el mundo de la fotografía entiendes
-        que la constancia, la disciplina y el esfuerzo tienen su recompensa. Poco a poco cualquiera puede aprender a tomar fotos como estas.
+            Soy un fotógrafo con experiencia que con pocos recursos ha podido sacar muy buenas fotos y que puede
+            compartir sus consejos para unas mejores imágenes. Cuando entras en el mundo de la fotografía entiendes
+            que la constancia, la disciplina y el esfuerzo tienen su recompensa. Poco a poco cualquiera puede
+            aprender a tomar fotos como estas.
         </p>
     </section>
 
 
-    
-
+    <!-- REDES SOCIALES -->
     <section id="redes" class="redes">
-  <h2>Mis redes</h2>
-  <p>Puedes encontrarme o escribirme en cualquiera de estas plataformas:</p>
+        <h2>Mis redes</h2>
+        <p>Puedes encontrarme o escribirme en cualquiera de estas plataformas:</p>
+        <div class="iconos-redes">
+            <a href="mailto:enfoquesalvajee@gmail.com" target="_blank" class="icono">
+                <i class="fas fa-envelope"></i> enfoquesalvajee@gmail.com
+            </a>
+            <a href="https://www.instagram.com/enfoquesalvajee" target="_blank" class="icono">
+                <i class="fab fa-instagram"></i> @enfoquesalvajee
+            </a>
+            <a href="https://www.tiktok.com/@enfoquesalvajee" target="_blank" class="icono">
+                <i class="fab fa-tiktok"></i> @enfoquesalvajee
+            </a>
+        </div>
+    </section>
 
-  <div class="iconos-redes">
-    <a href="mailto:enfoquesalvajee@gmail.com" target="_blank" class="icono">
-      <i class="fas fa-envelope"></i> enfoquesalvajee@gmail.com
-    </a>
-    <a href="https://www.instagram.com/enfoquesalvajee" target="_blank" class="icono">
-      <i class="fab fa-instagram"></i> @enfoquesalvajee
-    </a>
-    <a href="https://www.tiktok.com/@enfoquesalvajee" target="_blank" class="icono">
-      <i class="fab fa-tiktok"></i> @enfoquesalvajee
-    </a>
-  </div>
-</section>
 
-    
     <footer class="footer-1">
-    <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
-</footer>
-
-<footer class="footer-2">
-    <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
-</footer>
+        <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
+    </footer>
+    <footer class="footer-2">
+        <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
+    </footer>
 
 
     <script>
-    // Selecciona todas las imágenes de la galería
-    const fotos = document.querySelectorAll('.galeria-mini img');
-
-    fotos.forEach(foto => {
-        foto.addEventListener('click', () => {
-            // Si ya está ampliada, la reduce
-            if (foto.classList.contains('enlarged')) {
-                foto.classList.remove('enlarged');
-            } else {
-                // Quita la ampliación de otras fotos
-                fotos.forEach(f => f.classList.remove('enlarged'));
-                // Amplía solo la que se clicó
-                foto.classList.add('enlarged');
-            }
+        const fotos = document.querySelectorAll('.galeria-mini img');
+        fotos.forEach(foto => {
+            foto.addEventListener('click', () => {
+                if (foto.classList.contains('enlarged')) {
+                    foto.classList.remove('enlarged');
+                } else {
+                    fotos.forEach(f => f.classList.remove('enlarged'));
+                    foto.classList.add('enlarged');
+                }
+            });
         });
-    });
-</script>
-<script>
-    document.addEventListener("contextmenu", function(e){
-        e.preventDefault();
-        alert("Las imágenes están protegidas. 😊");
-    });
-</script>
 
-
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            alert("Las imágenes están protegidas. 😊");
+        });
+    </script>
 
 </body>
 </html>
