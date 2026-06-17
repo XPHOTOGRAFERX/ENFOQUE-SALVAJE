@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería - Enfoque Salvaje</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- ESTILO GENERAL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background-color: #000;
             color: #fff;
-            margin: 0;
-            font-family: "Poppins", sans-serif;
+            font-family: Arial, sans-serif;
         }
 
-        /* --- MENÚ SUPERIOR --- */
+        /* --- MENÚ --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -23,12 +23,10 @@
             background-color: rgba(0, 0, 0, 0.8);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
         }
 
-        header img {
-            height: 60px;
-        }
+        header img { height: 60px; }
 
         nav a {
             color: #fff;
@@ -40,102 +38,490 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #0f713b;
-        }
+        nav a:hover { color: #0f713b; }
+        nav a.activo { color: #0f713b; }
 
         /* --- TÍTULO --- */
-        h1 {
+        .page-title {
             text-align: center;
-            margin-top: 60px;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            padding: 70px 20px 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2.8rem;
             color: #0f713b;
-            font-family: 'Merriweather', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
-        /* --- GALERÍA --- */
-        .galeria {
+        .page-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #0f713b;
+            margin: 20px auto 0;
+        }
+
+        /* --- FILTROS --- */
+        .filtros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 50px 20px 20px;
+        }
+
+        .filtro-btn {
+            background: transparent;
+            border: 1px solid #0f713b44;
+            color: #aaa;
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .filtro-btn:hover {
+            border-color: #0f713b;
+            color: #fff;
+        }
+
+        .filtro-btn.activo {
+            background: #0f713b;
+            border-color: #0f713b;
+            color: #fff;
+        }
+
+        /* --- SECCIONES DE CATEGORÍA --- */
+        .galeria-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .categoria-bloque {
+            margin-bottom: 80px;
+        }
+
+        .categoria-bloque:last-child {
+            margin-bottom: 20px;
+        }
+
+        /* Cabecera de categoría */
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #0f713b33;
+        }
+
+        .cat-icono {
+            width: 44px;
+            height: 44px;
+            background: #0f713b18;
+            border: 1px solid #0f713b44;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f713b;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .cat-header h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.7rem;
+            color: #0f713b;
+        }
+
+        .cat-header .cat-count {
+            margin-left: auto;
+            font-size: 0.8rem;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        /* Grid de fotos */
+        .foto-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
         }
 
-        .galeria img {
+        /* Tarjeta de foto */
+        .foto-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #0d0d0d;
+            border: 1px solid #0f713b22;
+            aspect-ratio: 4/3;
+        }
+
+        .foto-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .foto-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .foto-card:hover {
+            box-shadow: 0 0 18px #0f713b55;
+            border-color: #0f713b;
+        }
+
+        /* Etiqueta sobre la foto */
+        .foto-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 20px 14px 12px;
+            font-size: 0.82rem;
+            color: #ccc;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .foto-card:hover .foto-label {
+            opacity: 1;
+        }
+
+        /* Placeholder para categorías sin fotos */
+        .placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .placeholder-card {
+            aspect-ratio: 4/3;
+            background: #0a0a0a;
+            border: 1px dashed #0f713b22;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #222;
+            gap: 10px;
+            font-size: 0.82rem;
         }
 
-        .galeria img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #0f713b;
+        .placeholder-card i {
+            font-size: 1.8rem;
+            color: #1a1a1a;
         }
 
-        /* --- PIE DE PÁGINA --- */
+        /* --- LIGHTBOX --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lightbox.abierto {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 0 40px #0f713b33;
+        }
+
+        .lightbox-cerrar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .lightbox-cerrar:hover { opacity: 1; }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #aaa;
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 30px;
-            font-size: 0.9rem;
-            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            background: #111;
             color: #888;
+            font-size: 0.9rem;
         }
-        footer {
-    display: block;
-    width: 100%;
-}
 
-.footer-1 {
-    margin-bottom: 40px; /* separación hacia abajo */
-}
+        .footer-2 { border-top: 1px solid #1a1a1a; }
 
-.footer-2 {
-    margin-top: 20px; /* por si quieres más separación arriba */
-}
-        
-
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav a { margin: 0 8px; font-size: 0.85rem; }
+            .galeria-section { padding: 40px 16px; }
+            .page-title h1 { font-size: 2rem; }
+            .foto-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- --- MENÚ SUPERIOR --- -->
+    <!-- MENÚ -->
     <header>
         <a href="index.html">
-            <img src="images/mi-logo.png" alt="Logo de Enfoque Salvaje">
+            <img src="images/mi-logo.png" alt="Logo Enfoque Salvaje">
         </a>
         <nav>
-    <a href="index.html">Inicio</a>
-    <a href="galeria.html">Galería</a>
-    <a href="experiencias.html">Experiencias</a>
-    <a href="miequipo.html">Mi Equipo</a>
-    <a href="recomendaciones.html">Mis Recomendaciones</a>
-    <a href="micurso.html">Mi Curso</a>
-</nav>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html" class="activo">Galería</a>
+            <a href="experiencias.html">Experiencias</a>
+            <a href="miequipo.html">Mi Equipo</a>
+            <a href="recomendaciones.html">Mis Recomendaciones</a>
+            <a href="micurso.html">Mi Curso</a>
+        </nav>
     </header>
 
-    <!-- --- TÍTULO --- -->
-    <h1>Galería Fotográfica</h1>
+    <!-- TÍTULO -->
+    <div class="page-title">
+        <h1>Galería Fotográfica</h1>
+        <p>Fauna de Sierra Morena capturada desde el hide. Cada foto es el resultado de horas de espera y paciencia.</p>
+        <div class="divider"></div>
+    </div>
 
-    <!-- --- GALERÍA DE FOTOS --- -->
-    <section class="galeria">
-        <img src="images/foto1.JPG" alt="Foto 1">
-        <img src="images/foto2.JPG" alt="Foto 2">
-        <img src="images/foto3.JPG" alt="Foto 3">
-        <img src="images/foto4.JPG" alt="Foto 4">
-        <img src="images/foto5.JPG" alt="Foto 5">
-        <img src="images/foto6.JPG" alt="Foto 6">
+    <!-- FILTROS -->
+    <div class="filtros">
+        <button class="filtro-btn activo" onclick="filtrar('todas', this)">Todas</button>
+        <button class="filtro-btn" onclick="filtrar('rapaces', this)">Rapaces</button>
+        <button class="filtro-btn" onclick="filtrar('reptiles', this)">Reptiles</button>
+        <button class="filtro-btn" onclick="filtrar('ciervos', this)">Ciervos</button>
+        <button class="filtro-btn" onclick="filtrar('insectivoros', this)">Insectívoros</button>
+        <button class="filtro-btn" onclick="filtrar('aves-forestales', this)">Aves Forestales</button>
+    </div>
+
+    <!-- GALERÍA -->
+    <section class="galeria-section">
+
+        <!-- RAPACES -->
+        <div class="categoria-bloque" data-cat="rapaces">
+            <div class="cat-header">
+                <div class="cat-icono"><i class="fas fa-feather-alt"></i></div>
+                <h2>Rapaces</h2>
+                <span class="cat-count">7 fotos</span>
+            </div>
+            <div class="foto-grid">
+                <div class="foto-card" onclick="abrirLightbox('images/foto2.JPG', 'Águila calzada')">
+                    <img src="images/foto2.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/foto3.JPG', 'Águila calzada')">
+                    <img src="images/foto3.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/foto4.JPG', 'Águila calzada')">
+                    <img src="images/foto4.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/foto5.JPG', 'Águila calzada')">
+                    <img src="images/foto5.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/foto7.JPG', 'Águila calzada')">
+                    <img src="images/foto7.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/foto8.JPG', 'Águila calzada')">
+                    <img src="images/foto8.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/foto9.JPG', 'Buitre')">
+                    <img src="images/foto9.JPG" alt="Buitre">
+                    <div class="foto-label">Buitre</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REPTILES -->
+        <div class="categoria-bloque" data-cat="reptiles">
+            <div class="cat-header">
+                <div class="cat-icono"><i class="fas fa-dragon"></i></div>
+                <h2>Reptiles</h2>
+                <span class="cat-count">1 foto</span>
+            </div>
+            <div class="foto-grid">
+                <div class="foto-card" onclick="abrirLightbox('images/foto6.JPG', 'Lagarto')">
+                    <img src="images/foto6.JPG" alt="Lagarto">
+                    <div class="foto-label">Lagarto</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CIERVOS -->
+        <div class="categoria-bloque" data-cat="ciervos">
+            <div class="cat-header">
+                <div class="cat-icono"><i class="fas fa-paw"></i></div>
+                <h2>Ciervos</h2>
+                <span class="cat-count">Próximamente</span>
+            </div>
+            <div class="placeholder-grid">
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- INSECTÍVOROS -->
+        <div class="categoria-bloque" data-cat="insectivoros">
+            <div class="cat-header">
+                <div class="cat-icono"><i class="fas fa-bug"></i></div>
+                <h2>Insectívoros</h2>
+                <span class="cat-count">Próximamente</span>
+            </div>
+            <div class="placeholder-grid">
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVES FORESTALES -->
+        <div class="categoria-bloque" data-cat="aves-forestales">
+            <div class="cat-header">
+                <div class="cat-icono"><i class="fas fa-dove"></i></div>
+                <h2>Aves Forestales</h2>
+                <span class="cat-count">Próximamente</span>
+            </div>
+            <div class="placeholder-grid">
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+                <div class="placeholder-card">
+                    <i class="fas fa-camera"></i>
+                    <span>Fotos próximamente</span>
+                </div>
+            </div>
+        </div>
+
     </section>
 
-    <footer class="footer-1">
-    <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
-</footer>
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
+        <button class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
 
-<footer class="footer-2">
-    <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
-</footer>
+    <footer class="footer-1">
+        <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
+    </footer>
+    <footer class="footer-2">
+        <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
+    </footer>
+
+    <script>
+        // Filtro por categoría
+        function filtrar(categoria, boton) {
+            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+            boton.classList.add('activo');
+
+            const bloques = document.querySelectorAll('.categoria-bloque');
+            bloques.forEach(bloque => {
+                if (categoria === 'todas' || bloque.dataset.cat === categoria) {
+                    bloque.style.display = 'block';
+                } else {
+                    bloque.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox
+        function abrirLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox').classList.add('abierto');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarLightbox(event) {
+            if (!event || event.target !== document.getElementById('lightbox-img')) {
+                document.getElementById('lightbox').classList.remove('abierto');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') cerrarLightbox();
+        });
+
+        // Protección de imágenes
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            alert("Las imágenes están protegidas. 😊");
+        });
+    </script>
 
 </body>
 </html>
