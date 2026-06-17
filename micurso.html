@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Curso - Enfoque Salvaje</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- MENÚ --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header img { height: 60px; }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #0f713b; }
+        nav a.activo { color: #0f713b; }
+
+        /* --- HERO CURSO --- */
+        .curso-hero {
+            text-align: center;
+            padding: 100px 20px 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curso-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, #0f713b0d 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .badge-pronto {
+            display: inline-block;
+            background: #0f713b18;
+            border: 1px solid #0f713b55;
+            color: #0f713b;
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 28px;
+        }
+
+        .curso-hero h1 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 3rem;
+            color: #fff;
+            line-height: 1.25;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+
+        .curso-hero h1 span {
+            color: #0f713b;
+        }
+
+        .curso-hero p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 580px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #0f713b;
+            margin: 0 auto 60px;
+        }
+
+        /* --- FORMULARIO EMAIL --- */
+        .email-bloque {
+            background: #0d0d0d;
+            border: 1px solid #0f713b33;
+            border-radius: 12px;
+            padding: 44px 40px;
+            max-width: 540px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .email-bloque i.icono-sobre {
+            font-size: 2rem;
+            color: #0f713b;
+            margin-bottom: 18px;
+        }
+
+        .email-bloque h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .email-bloque p {
+            color: #888;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .form-email {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .form-email input[type="email"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 13px 18px;
+            background: #111;
+            border: 1px solid #0f713b44;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-email input[type="email"]::placeholder {
+            color: #444;
+        }
+
+        .form-email input[type="email"]:focus {
+            border-color: #0f713b;
+        }
+
+        .form-email button {
+            padding: 13px 26px;
+            background: #0f713b;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.95rem;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .form-email button:hover {
+            background: #0a5a2e;
+            transform: scale(1.02);
+        }
+
+        .form-nota {
+            margin-top: 14px;
+            color: #444;
+            font-size: 0.78rem;
+        }
+
+        .mensaje-ok {
+            display: none;
+            margin-top: 18px;
+            color: #0f713b;
+            font-size: 0.95rem;
+        }
+
+        /* --- QUÉ APRENDERÁS --- */
+        .temario-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .temario-section h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 2rem;
+            color: #0f713b;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .temario-sub {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+        }
+
+        .modulos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .modulo {
+            background: #0d0d0d;
+            border: 1px solid #0f713b22;
+            border-radius: 10px;
+            padding: 26px 22px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .modulo:hover {
+            border-color: #0f713b55;
+            box-shadow: 0 0 14px #0f713b11;
+        }
+
+        .modulo .mod-num {
+            font-size: 0.72rem;
+            color: #0f713b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modulo h3 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .modulo p {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .modulo .mod-icono {
+            font-size: 1.3rem;
+            color: #0f713b;
+            margin-bottom: 14px;
+        }
+
+        /* --- PARA QUIÉN ES --- */
+        .para-quien {
+            background: #060f07;
+            border-top: 1px solid #0f713b22;
+            border-bottom: 1px solid #0f713b22;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .para-quien h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.9rem;
+            color: #0f713b;
+            margin-bottom: 40px;
+        }
+
+        .perfiles {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .perfil {
+            background: #0d0d0d;
+            border: 1px solid #0f713b22;
+            border-radius: 10px;
+            padding: 24px 20px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .perfil i {
+            font-size: 1.6rem;
+            color: #0f713b;
+            margin-bottom: 12px;
+        }
+
+        .perfil p {
+            color: #aaa;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-2 { border-top: 1px solid #1a1a1a; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav a { margin: 0 10px; font-size: 0.85rem; }
+            .curso-hero h1 { font-size: 2rem; }
+            .email-bloque { padding: 30px 20px; }
+            .form-email { flex-direction: column; }
+            .form-email input[type="email"],
+            .form-email button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ -->
+    <header>
+        <a href="index.html">
+            <img src="images/mi-logo.png" alt="Logo Enfoque Salvaje">
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+            <a href="experiencias.html">Experiencias</a>
+            <a href="miequipo.html">Mi Equipo</a>
+            <a href="recomendaciones.html">Mis Recomendaciones</a>
+            <a href="micurso.html" class="activo">Mi Curso</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="curso-hero">
+        <div class="badge-pronto">Próximamente</div>
+        <h1>Aprende a fotografiar <span>fauna salvaje</span> desde cero</h1>
+        <p>Un curso pensado para quien quiere empezar sin gastar una fortuna en equipo. Técnica, paciencia y conocimiento del terreno, explicados desde la experiencia real.</p>
+        <div class="divider"></div>
+
+        <!-- FORMULARIO EMAIL -->
+        <div class="email-bloque">
+            <i class="fas fa-envelope icono-sobre"></i>
+            <h2>Avísame cuando esté disponible</h2>
+            <p>Deja tu email y serás el primero en saber cuándo sale el curso. Sin spam, solo el aviso cuando esté listo.</p>
+            <div class="form-email">
+                <input type="email" id="campo-email" placeholder="tu@email.com">
+                <button onclick="enviarEmail()">Quiero que me avisen</button>
+            </div>
+            <p class="form-nota">Sin spam. Solo un aviso cuando el curso esté listo.</p>
+            <p class="mensaje-ok" id="mensaje-ok">
+                <i class="fas fa-check-circle"></i> ¡Apuntado! Te avisamos en cuanto esté disponible.
+            </p>
+        </div>
+    </div>
+
+    <!-- QUÉ APRENDERÁS -->
+    <section class="temario-section">
+        <h2>¿Qué aprenderás?</h2>
+        <p class="temario-sub">Una idea de los temas que cubrirá el curso</p>
+        <div class="modulos">
+            <div class="modulo">
+                <div class="mod-icono"><i class="fas fa-camera"></i></div>
+                <p class="mod-num">Módulo 01</p>
+                <h3>El equipo: qué necesitas y qué no</h3>
+                <p>Cómo empezar sin arruinarte. Qué cámara elegir, qué objetivos importan y qué puedes dejar para más adelante.</p>
+            </div>
+            <div class="modulo">
+                <div class="mod-icono"><i class="fas fa-tree"></i></div>
+                <p class="mod-num">Módulo 02</p>
+                <h3>El hide: tu herramienta más importante</h3>
+                <p>Cómo montar un hide, dónde colocarlo y cómo conseguir que los animales pierdan el miedo a él.</p>
+            </div>
+            <div class="modulo">
+                <div class="mod-icono"><i class="fas fa-paw"></i></div>
+                <p class="mod-num">Módulo 03</p>
+                <h3>Conocer el terreno y la fauna</h3>
+                <p>Cómo leer el monte, encontrar rastros y anticiparte a los movimientos de los animales.</p>
+            </div>
+            <div class="modulo">
+                <div class="mod-icono"><i class="fas fa-sliders-h"></i></div>
+                <p class="mod-num">Módulo 04</p>
+                <h3>Técnica fotográfica aplicada</h3>
+                <p>Ajustes de cámara para fauna: velocidad, ISO, enfoque y cómo reaccionar cuando el animal aparece.</p>
+            </div>
+            <div class="modulo">
+                <div class="mod-icono"><i class="fas fa-clock"></i></div>
+                <p class="mod-num">Módulo 05</p>
+                <h3>La paciencia como parte del proceso</h3>
+                <p>Por qué la constancia vale más que el equipo, y cómo mantener la motivación cuando nada sale.</p>
+            </div>
+            <div class="modulo">
+                <div class="mod-icono"><i class="fas fa-magic"></i></div>
+                <p class="mod-num">Módulo 06</p>
+                <h3>Edición básica de fotos de fauna</h3>
+                <p>Los ajustes esenciales para que tus fotos luzcan bien sin pasarte horas delante del ordenador.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA QUIÉN ES -->
+    <section class="para-quien">
+        <h2>¿Para quién es este curso?</h2>
+        <div class="perfiles">
+            <div class="perfil">
+                <i class="fas fa-seedling"></i>
+                <p>Personas que quieren empezar en fotografía de fauna sin saber por dónde</p>
+            </div>
+            <div class="perfil">
+                <i class="fas fa-euro-sign"></i>
+                <p>Quien no tiene un gran presupuesto pero sí muchas ganas de aprender</p>
+            </div>
+            <div class="perfil">
+                <i class="fas fa-mountain"></i>
+                <p>Amantes de la naturaleza que quieren llevarse recuerdos visuales del campo</p>
+            </div>
+            <div class="perfil">
+                <i class="fas fa-camera-retro"></i>
+                <p>Fotógrafos con experiencia general que quieren especializarse en fauna</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-1">
+        <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
+    </footer>
+    <footer class="footer-2">
+        <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
+    </footer>
+
+    <script>
+        function enviarEmail() {
+            const campo = document.getElementById('campo-email');
+            const mensaje = document.getElementById('mensaje-ok');
+            const email = campo.value.trim();
+
+            if (!email || !email.includes('@')) {
+                campo.style.borderColor = '#a33';
+                setTimeout(() => { campo.style.borderColor = '#0f713b44'; }, 1500);
+                return;
+            }
+
+            campo.style.display = 'none';
+            document.querySelector('.form-email button').style.display = 'none';
+            mensaje.style.display = 'block';
+        }
+
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            alert("Las imágenes están protegidas. 😊");
+        });
+    </script>
+
+</body>
+</html>

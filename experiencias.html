@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencias - Enfoque Salvaje</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- MENÚ --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header img { height: 60px; }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #0f713b; }
+        nav a.activo { color: #0f713b; }
+
+        /* --- TÍTULO --- */
+        .page-title {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2.8rem;
+            color: #0f713b;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #0f713b;
+            margin: 20px auto 0;
+        }
+
+        /* --- EXPERIENCIAS --- */
+        .experiencias-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 20px 100px;
+        }
+
+        .experiencia {
+            margin-bottom: 100px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .experiencia:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* Cabecera de cada experiencia */
+        .exp-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .exp-numero {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 3.5rem;
+            color: #0f713b22;
+            line-height: 1;
+            min-width: 60px;
+            font-weight: 700;
+            user-select: none;
+        }
+
+        .exp-titulo-bloque { flex: 1; }
+
+        .exp-etiqueta {
+            font-size: 0.78rem;
+            color: #0f713b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .exp-titulo-bloque h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.9rem;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .exp-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .exp-meta span {
+            font-size: 0.82rem;
+            color: #555;
+        }
+
+        .exp-meta span i {
+            color: #0f713b;
+            margin-right: 5px;
+        }
+
+        /* Foto + texto */
+        .exp-body {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .exp-body.invertido {
+            flex-direction: row-reverse;
+        }
+
+        /* Foto / placeholder */
+        .exp-foto {
+            width: 300px;
+            min-width: 300px;
+            height: 210px;
+            background: #0d0d0d;
+            border: 1px solid #0f713b44;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #0f713b55;
+            font-size: 0.82rem;
+            gap: 10px;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .exp-foto i { font-size: 2rem; opacity: 0.4; }
+
+        .exp-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Texto */
+        .exp-texto { flex: 1; }
+
+        .exp-texto p {
+            color: #bbb;
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        /* Frase destacada */
+        .exp-frase {
+            border-left: 3px solid #0f713b;
+            padding: 14px 20px;
+            margin: 24px 0;
+            color: #ccc;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            line-height: 1.6;
+            background: #0f713b08;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Lección aprendida */
+        .exp-leccion {
+            background: #0f713b0d;
+            border: 1px solid #0f713b33;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .exp-leccion i {
+            color: #0f713b;
+            font-size: 1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .exp-leccion p {
+            color: #aaa;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .exp-leccion strong { color: #0f713b; }
+
+        /* --- TARJETA PRÓXIMAMENTE --- */
+        .proximamente {
+            background: #0d0d0d;
+            border: 1px dashed #0f713b33;
+            border-radius: 10px;
+            padding: 50px 30px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 80px;
+        }
+
+        .proximamente i {
+            font-size: 2rem;
+            color: #0f713b33;
+            margin-bottom: 16px;
+        }
+
+        .proximamente h3 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #444;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .proximamente p {
+            color: #333;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-2 { border-top: 1px solid #1a1a1a; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav a { margin: 0 10px; font-size: 0.85rem; }
+
+            .exp-body,
+            .exp-body.invertido { flex-direction: column; }
+
+            .exp-foto { width: 100%; min-width: unset; }
+            .page-title h1 { font-size: 2rem; }
+            .exp-numero { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ -->
+    <header>
+        <a href="index.html">
+            <img src="images/mi-logo.png" alt="Logo Enfoque Salvaje">
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+            <a href="experiencias.html" class="activo">Experiencias</a>
+            <a href="miequipo.html">Mi Equipo</a>
+            <a href="recomendaciones.html">Mis Recomendaciones</a>
+            <a href="micurso.html">Mi Curso</a>
+        </nav>
+    </header>
+
+    <!-- TÍTULO -->
+    <div class="page-title">
+        <h1>Experiencias</h1>
+        <p>Momentos reales en el campo. Lo que se siente cuando la paciencia y la naturaleza se encuentran en el mismo instante.</p>
+        <div class="divider"></div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <section class="experiencias-section">
+
+        <!-- EXPERIENCIA 1: EL ÁGUILA BOOTED -->
+        <div class="experiencia">
+            <div class="exp-header">
+                <div class="exp-numero">01</div>
+                <div class="exp-titulo-bloque">
+                    <p class="exp-etiqueta"><i class="fas fa-feather-alt"></i> Rapaces</p>
+                    <h2>El día que casi me quedo en la cama</h2>
+                    <div class="exp-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sierra Morena</span>
+                        <span><i class="fas fa-clock"></i> Amanecer</span>
+                        <span><i class="fas fa-dove"></i> Águila calzada</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exp-body">
+                <div class="exp-foto">
+                    <!-- Cuando tengas la foto: <img src="images/aguila-calzada.JPG" alt="Águila calzada"> -->
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Foto próximamente</span>
+                </div>
+                <div class="exp-texto">
+                    <p>
+                        Llevaba varios días levantándome antes del amanecer para bajar al hide. Día tras día, el despertador sonaba en la oscuridad y yo me levantaba sin pensarlo demasiado. Pero aquella mañana fue distinta. Sonó el despertador y me quedé mirando el techo.
+                    </p>
+                    <div class="exp-frase">
+                        "Era el último día. ¿Y si me lo tomaba de descanso? Ya había madrugado bastante esa semana."
+                    </div>
+                    <p>
+                        Estuve un buen rato dándole vueltas. La cama estaba caliente, afuera hacía frío, y ya había tenido otras buenas sesiones. Casi lo convenzo. Pero algo me dijo que bajara. Me levanté, cogí el equipo y fui al hide.
+                    </p>
+                    <p>
+                        Apareció el águila calzada. Se posó tranquila, con la luz del amanecer dándole justo de frente. Tuve tiempo de enfocar, de esperar, de disparar. Fue la mejor foto que he sacado hasta hoy. Si me hubiera quedado en la cama, esa imagen no existiría.
+                    </p>
+                    <div class="exp-leccion">
+                        <i class="fas fa-lightbulb"></i>
+                        <p><strong>Lo que aprendí:</strong> La naturaleza no avisa. El mejor momento puede ser exactamente el día que menos ganas tienes de levantarte. La constancia no tiene días libres.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- EXPERIENCIA 2: EL LINCE -->
+        <div class="experiencia">
+            <div class="exp-header">
+                <div class="exp-numero">02</div>
+                <div class="exp-titulo-bloque">
+                    <p class="exp-etiqueta"><i class="fas fa-paw"></i> Mamíferos</p>
+                    <h2>El lince que no esperaba</h2>
+                    <div class="exp-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sierra Morena</span>
+                        <span><i class="fas fa-sun"></i> Media mañana</span>
+                        <span><i class="fas fa-paw"></i> Lince ibérico</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exp-body invertido">
+                <div class="exp-foto">
+                    <!-- Cuando tengas la foto: <img src="images/lince.JPG" alt="Lince ibérico"> -->
+                    <i class="fas fa-paw"></i>
+                    <span>Foto próximamente</span>
+                </div>
+                <div class="exp-texto">
+                    <p>
+                        Ese día no había ido al campo a fotografiar. Había salido a caminar, a despejarme, a disfrutar del paisaje sin más presión que la de respirar bien y mirar lejos. La cámara la llevaba casi por costumbre, pero sin ninguna expectativa.
+                    </p>
+                    <p>
+                        Iba andando despacio cuando algo me hizo girar la cabeza a la izquierda. No sé si fue un movimiento, un sonido, o simplemente el instinto. Y ahí estaba: un lince ibérico echado entre la vegetación, completamente tranquilo, mirándome con esa calma que solo tienen los animales que saben que no tienen miedo de nada.
+                    </p>
+                    <div class="exp-frase">
+                        "Me senté muy despacio, sin hacer ruido, sin gestos bruscos. Y me quedé a su lado un buen rato."
+                    </div>
+                    <p>
+                        No se movió. Yo tampoco quería moverme. Fui sacando fotos con cuidado, disfrutando del momento tanto como del resultado. Fue uno de esos encuentros que no se planifican y que por eso mismo son irrepetibles.
+                    </p>
+                    <div class="exp-leccion">
+                        <i class="fas fa-lightbulb"></i>
+                        <p><strong>Lo que aprendí:</strong> No siempre hace falta el hide, el madrugón y el plan perfecto. A veces la naturaleza te regala algo cuando menos lo esperas. Lleva siempre la cámara.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PRÓXIMAMENTE -->
+        <div class="proximamente">
+            <i class="fas fa-feather-alt"></i>
+            <h3>Más experiencias próximamente</h3>
+            <p>Sigo acumulando momentos en el campo. Cuando tenga la siguiente historia bien guardada, la compartiré aquí.</p>
+        </div>
+
+    </section>
+
+    <footer class="footer-1">
+        <p>© EnfoqueSalvaje - Todos los derechos reservados</p>
+    </footer>
+    <footer class="footer-2">
+        <p>© EnfoqueSalvaje - Todas las imágenes están protegidas por derechos de autor. Queda prohibido su uso sin permiso.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            alert("Las imágenes están protegidas. 😊");
+        });
+    </script>
+
+</body>
+</html>
