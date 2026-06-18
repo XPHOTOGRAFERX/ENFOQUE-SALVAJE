@@ -346,6 +346,7 @@
         <button class="filtro-btn" onclick="filtrar('ciervos', this)">Ciervos</button>
         <button class="filtro-btn" onclick="filtrar('insectivoros', this)">Insectívoros</button>
         <button class="filtro-btn" onclick="filtrar('aves-forestales', this)">Aves Forestales</button>
+        <button class="filtro-btn" onclick="filtrar('ardillas', this)">Ardillas</button>
     </div>
 
     <!-- GALERÍA -->
@@ -383,8 +384,12 @@
                     <img src="images/foto8.JPG" alt="Águila calzada">
                     <div class="foto-label">Águila calzada</div>
                 </div>
-                <div class="foto-card" onclick="abrirLightbox('images/foto9.JPG', 'Buitre')">
-                    <img src="images/foto9.JPG" alt="Buitre">
+                <div class="foto-card" onclick="abrirLightbox('images/foto9.JPG', 'Águila calzada')">
+                    <img src="images/foto9.JPG" alt="Águila calzada">
+                    <div class="foto-label">Águila calzada</div>
+                </div>
+                <div class="foto-card" onclick="abrirLightbox('images/buitre.JPG', 'Buitre')">
+                    <img src="images/buitre.JPG" alt="Buitre">
                     <div class="foto-label">Buitre</div>
                 </div>
             </div>
@@ -433,21 +438,25 @@
             <div class="cat-header">
                 <div class="cat-icono"><i class="fas fa-bug"></i></div>
                 <h2>Insectívoros</h2>
-                <span class="cat-count">Próximamente</span>
+                <span class="cat-count">4 fotos</span>
             </div>
-            <div class="placeholder-grid">
-                <div class="placeholder-card">
-                    <i class="fas fa-camera"></i>
-                    <span>Fotos próximamente</span>
-                </div>
-                <div class="placeholder-card">
-                    <i class="fas fa-camera"></i>
-                    <span>Fotos próximamente</span>
-                </div>
-                <div class="placeholder-card">
-                    <i class="fas fa-camera"></i>
-                    <span>Fotos próximamente</span>
-                </div>
+            <div class="foto-grid">
+                <div class="foto-card" onclick="abrirLightbox('images/ruiseñor.JPG', 'Ruiseñor')">
+    <img src="images/ruiseñor.JPG" alt="ruiseñor">
+    <div class="foto-label">Ruiseñor</div>
+</div>
+                <div class="foto-card" onclick="abrirLightbox('images/Trepador.JPG', 'Trepador')">
+    <img src="images/trepador.JPG" alt="Trepador">
+    <div class="foto-label">Trepador</div>
+</div>
+                <div class="foto-card" onclick="abrirLightbox('images/Insectivoro.JPG', 'Insectivoro')">
+    <img src="images/insectivoro.JPG" alt="Insectivoro">
+    <div class="foto-label">Insectivoro</div>
+</div>
+<div class="foto-card" onclick="abrirLightbox('images/Insectivoro2.JPG', 'Insectivoro')">
+    <img src="images/insectivoro2.JPG" alt="Insectivoro">
+    <div class="foto-label">Insectivoro</div>
+</div>
             </div>
         </div>
 
@@ -458,21 +467,48 @@
                 <h2>Aves Forestales</h2>
                 <span class="cat-count">Próximamente</span>
             </div>
-            <div class="placeholder-grid">
-                <div class="placeholder-card">
-                    <i class="fas fa-camera"></i>
-                    <span>Fotos próximamente</span>
-                </div>
-                <div class="placeholder-card">
-                    <i class="fas fa-camera"></i>
-                    <span>Fotos próximamente</span>
-                </div>
-                <div class="placeholder-card">
-                    <i class="fas fa-camera"></i>
-                    <span>Fotos próximamente</span>
-                </div>
+            <div class="foto-grid">
+                <div class="foto-card" onclick="abrirLightbox('images/Abejarruco.JPG', 'Abejarruco')">
+    <img src="images/abejarruco.JPG" alt="Abejarruco">
+    <div class="foto-label">Abejarruco</div>
+</div>
+                <div class="foto-card" onclick="abrirLightbox('images/Picapinos.JPG', 'Picapinos')">
+    <img src="images/picapinos.JPG" alt="Picapinos">
+    <div class="foto-label">Picapinos</div>
+</div>
+                <div class="foto-card" onclick="abrirLightbox('images/Oropendola.JPG', 'Oropendola')">
+    <img src="images/oropendola.JPG" alt="Oropendola">
+    <div class="foto-label">Oropendola</div>
+</div>
+<div class="foto-card" onclick="abrirLightbox('images/Rabilargo.JPG', 'Rabilargo')">
+    <img src="images/rabilargo.JPG" alt="Rabilargo">
+    <div class="foto-label">Rabilargo</div>
+</div>
             </div>
         </div>
+
+        <!-- ARDILLAS -->
+<div class="categoria-bloque" data-cat="ardillas">
+    <div class="cat-header">
+        <div class="cat-icono"><i class="fas fa-squirrel"></i></div>
+        <h2>Ardillas</h2>
+        <span class="cat-count">Próximamente</span>
+    </div>
+    <div class="foto-grid">
+        <div class="foto-card" onclick="abrirLightbox('images/Ardilla.JPG', 'Ardilla')">
+    <img src="images/ardilla.JPG" alt="Ardilla">
+    <div class="foto-label">Ardilla</div>
+</div>
+        <div class="foto-card" onclick="abrirLightbox('images/Ardilla2.JPG', 'Ardilla')">
+    <img src="images/ardilla2.JPG" alt="Ardilla">
+    <div class="foto-label">Ardilla</div>
+</div>
+        <div class="placeholder-card">
+            <i class="fas fa-camera"></i>
+            <span>Fotos próximamente</span>
+        </div>
+    </div>
+</div>
 
     </section>
 

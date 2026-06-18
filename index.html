@@ -41,12 +41,22 @@
         }
 
         .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.cards-grid .card-info:nth-child(4) {
+    grid-column: 1 / 2;
+    margin-left: calc(50% + 12px);
+}
+
+.cards-grid .card-info:nth-child(5) {
+    grid-column: 2 / 3;
+    margin-left: 0;
+}
 
         .card-info {
             background: #0d0d0d;
