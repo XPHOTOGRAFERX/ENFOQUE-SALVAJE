@@ -311,6 +311,96 @@
             color: #fff;
             transform: scale(1.05);
         }
+        @media (max-width: 768px) {
+    /* MENÚ */
+    header {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+        margin: 0 6px;
+    }
+
+    /* HERO */
+    .hero-text {
+        width: 100%;
+        background: linear-gradient(180deg, rgba(0,0,0,0.92) 60%, rgba(0,0,0,0) 100%);
+        padding: 30px 20px;
+        justify-content: flex-start;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        max-width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 400px;
+    }
+
+    /* TARJETAS */
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    .cards-grid .card-info:nth-child(1),
+    .cards-grid .card-info:nth-child(2),
+    .cards-grid .card-info:nth-child(3),
+    .cards-grid .card-info:nth-child(4),
+    .cards-grid .card-info:nth-child(5) {
+        grid-column: auto !important;
+        margin-left: 0 !important;
+    }
+
+    /* SIERRA MORENA */
+    .sierra-morena {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    .sierra-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .stat-box {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    /* GALERÍA MINI */
+    .galeria-mini img {
+        width: 100%;
+        height: 200px;
+    }
+
+    /* SECCIONES */
+    .que-encontraras {
+        padding: 50px 20px;
+    }
+
+    .sobre-mi {
+        padding: 50px 20px;
+    }
+}
 
     </style>
 </head>
